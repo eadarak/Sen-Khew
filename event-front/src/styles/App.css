@@ -1,0 +1,17 @@
+html,#root{
+  height: 100%;
+}
+
+body,#root{
+  font-family: 'Libre Baskerville', serif;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#App{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}

@@ -1,0 +1,121 @@
+:root{
+    --primary-color : #D8A43E;
+    --footer-color : rgba(255, 255, 255, 0.70);
+}
+
+footer {
+    display: flex;
+    background: rgba(0, 0, 0, .97);
+    color: var(--footer-color);
+    font-size: 18px;
+    font-style: normal;
+    line-height: normal;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center; /* Aligner les éléments au centre horizontalement */
+    text-align: center;
+    padding-top: 20px;
+    width: 100%;/* Aligner le texte au centre */
+}
+
+#footer div{
+    align-items:center;
+    max-width: 350px;
+}
+
+#footer div  h2{
+    font-family: 'Libre Baskerville';
+    font-weight: 700;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+#footer #description  h2 span{
+    color: var(--primary-color);
+}
+
+#footer #description  p{
+    font-size: 18px;
+    line-height: 1.5em;
+    font-family: 'Roboto';
+    text-align: justify;
+}
+
+#footer #liensUtiles{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-self: start;
+    gap: 10px;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+}
+#footer #liensUtiles ul{
+    padding: 0 20px;
+}
+#footer #liensUtiles li{
+    list-style-type: none;
+}
+
+#footer #liensUtiles li a{
+    text-decoration: none;
+    transition: all .3s ease-in-out;
+    font-size: 20px;
+    font-family: 'Roboto';
+    text-align: center;
+    color: var(--footer-color);
+    display: inline-block;
+    line-height: 1.5em;
+}
+/* hover with zoom effet */
+
+#footer #liensUtiles li a:hover{
+    color: var(--primary-color);
+    transform: scale(1.5);
+
+}
+
+#footer #mediaSociaux{
+    align-self: start;
+}
+
+#footer #mediaSociaux a{
+    margin: 0 7px;
+    width: 50px;
+    height: 50px;
+} 
+
+#footer #mediaSociaux a:hover{
+    filter: brightness(80%);
+}
+
+
+#footer #mediaSociaux div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+footer  #footer + #copyright{
+    border-top: 1px solid rgba(255, 255, 255, 0.5); 
+    margin-top: 20px; 
+    padding-top: 20px; 
+    width: 90%;
+}
+
+#copyright{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    
+}
