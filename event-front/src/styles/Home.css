@@ -1,0 +1,18 @@
+#Home{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    color: black;
+}
+
+#Home h1{
+    margin-bottom: auto;
+}
+#Home > div{
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+#Home > div > div.MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation0.MuiMobileStepper-root.MuiMobileStepper-positionStatic.css-rh92k-MuiPaper-root-MuiMobileStepper-root{
+    display: none;
+    margin-bottom: 15px;
+}

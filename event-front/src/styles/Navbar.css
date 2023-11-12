@@ -1,0 +1,224 @@
+:root{
+    --primary-color : #D8A43E;
+}
+
+#navbar{
+    background: #000;
+    height: 75px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
+}
+
+#navbar-content{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: inherit;
+
+}
+
+#nav-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+    padding: auto;
+}
+
+#nav-item #logo{
+    height: auto;
+    
+
+}
+
+#links ul{
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    padding: 15px 20px;
+    gap: 38px;
+    
+
+}
+
+#links li{
+    list-style-type: none;
+
+
+}
+
+#links a{
+    text-decoration: none;
+    color:#fff;
+    font-family: 'Roboto';
+    font-size: 20px;
+}
+
+#links a {
+    position: relative;
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s, transform 0.3s;
+}
+
+#links a::before {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-color);
+    transform: scaleX(0);
+    transform-origin: center bottom;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+/* Lors du survol*/
+
+#links a:hover {
+    color: var(--primary-color);
+}
+
+#links a:hover::before {
+    transform: scaleX(1);
+}
+
+#links ul li a.active{
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 5px;
+}
+
+#connect-buttons{
+    margin: auto  0;
+    display: flex;
+    gap: 20px;
+}
+
+
+#connect-buttons a{
+    font-size: 24px;
+    padding:10px 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'Roboto';
+    font-weight: 500px;
+    text-decoration: none;
+}
+
+#login{
+    color:white ;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0px 4px 4px 0px rgba(183, 133, 68, 0.50);
+    background-color: transparent;
+    transition: transform 0.3s; 
+}
+
+#signup{
+    border-radius: 10px;
+    background: var(--primary-color);
+    box-shadow: 0px 6px 8px 0px rgba(183, 133, 68, 0.50);
+    color: #000;
+}
+
+#connect-buttons a:hover {
+    transform: scale(1.1); 
+}
+
+#login:hover{
+    background-color:var(--primary-color);
+    color: white;
+    border: 2px solid rgba(0, 0, 0, 0.7);
+    box-shadow: 0px 6px 8px 0px rgba(0, 0, 0, 0.7);
+}
+
+#links li{
+    list-style-type: none;
+
+
+}
+
+#links a{
+    text-decoration: none;
+    color:#fff;
+    font-family: 'Roboto';
+    font-size: 24px;
+}
+
+
+
+#links a {
+    position: relative;
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s, transform 0.3s;
+}
+
+#links a::before {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-color);
+    transform: scaleX(0);
+    transform-origin: center bottom;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+/* Lors du survol */
+#links a:hover {
+    color: var(--primary-color);
+}
+
+#links a:hover::before {
+    transform: scaleX(1);
+}
+
+#links a.active{
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 5px;
+}
+
+#connect-buttons{
+    margin: auto  0;
+    display: flex;
+    gap: 20px;
+}
+
+
+#connect-buttons a{
+    font-size: 24px;
+    padding:10px 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'Roboto';
+    font-weight: 500px;
+    text-decoration: none;
+}
+
+#connect-buttons a:nth-child(1){
+    color:white ;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0px 4px 4px 0px rgba(183, 133, 68, 0.50);
+    background-color: transparent;
+    transition: transform 0.3s; 
+}
+
+#connect-buttons a:nth-child(2){
+    border-radius: 10px;
+    background: var(--primary-color);
+    box-shadow: 0px 6px 8px 0px rgba(183, 133, 68, 0.50);
+    color: #000;
+}
+
+#connect-buttons a:hover {
+    transform: scale(1.1); 
+}
+
+#connect-buttons a:nth-child(1):hover{
+    background-color:var(--primary-color);
+    color: white;
+    border: 2px solid rgba(0, 0, 0, 0.7);
+    box-shadow: 0px 6px 8px 0px rgba(0, 0, 0, 0.7);
+}

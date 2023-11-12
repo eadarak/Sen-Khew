@@ -1,0 +1,32 @@
+:root{
+    --primary-color : #D8A43E;
+}
+/* ScrollTopButton.css */
+.scroll-top-btn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color:   var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%; /* Arrondir le bouton */
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-shadow:0px 0px 1px var(--primary-color); 
+    width: auto;/* Supprimer l'effet d'enfoncement */
+}
+
+.scroll-top-btn span {
+    font-size: 24px; /* Ajuster la taille de la flèche */
+}
+
+.scroll-top-btn.visible {
+    display: block;
+}
+
+.scroll-top-btn:hover {
+    background-color: var(--primary-color);
+}
