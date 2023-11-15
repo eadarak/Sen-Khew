@@ -1,7 +1,6 @@
 package sn.app.event_back.domain.model;
 
-import java.io.Serializable;
-import java.util.Date;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -19,123 +19,68 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "Evenements")
-public class Evenement implements Serializable {
+@Table(name = "evenements")
+public class Evenement {
     @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_evenement")
     private int idEvent;
     private String nomEvenement;
     private String typeEvenement;
     private String lieuEvenement;
     private String descriptionEvenement;
-    private Date dateEvenement;
+    private String dateEvenement;
 
-     // relation-mcd entre evenement et Prestataire
+    //relation evenement client
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_client")
+    private Client client;
+
+    // relation-mcd entre evenement et Prestataire
     @JsonIgnore
-    @ManyToMany (fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinTable(name = "Prester",
-            joinColumns = {@JoinColumn(name = "Evenements")},
-            inverseJoinColumns = @JoinColumn(name = "Prestataires"))
+    @ManyToMany(fetch = FetchType.LAZY,cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @JoinTable(
+            name = "prester",
+            joinColumns = @JoinColumn(name = "id_evenement"),
+            inverseJoinColumns = @JoinColumn(name = "id_prestataire")
+    )
     private Set<Prestataire> prestataires = new HashSet<Prestataire>();
     
     public Set<Prestataire> getPrestataires(){
         return prestataires;
     }
 
-    // mcd entre evenement et Client
-    //@ManyToOne(fetch = FetchType.LAZY)
-    //@JoinColumn(name = "clients")
-    //private Client client;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "client")
-    private Client client;
-
-    /**
-     * constructeur vide 
-     */
-    public Evenement() {
+    public void setPrestataires(Set<Prestataire> nouveauxPrestataires) {
+        this.prestataires.clear();
+        this.prestataires.addAll(nouveauxPrestataires);
     }
 
-
-    /**
-     *Constructeur complet avec tous les attributs de la classe Evenement 
-     * @param nomEvenement
-     * @param typeEvenement familiale, religieuse, professionnelle, autres
-     * @param lieuEvenement
-     * @param descriptionEvenement
-     * @param dateEvenement
-     */
-    public Evenement(String nomEvenement, String typeEvenement, String lieuEvenement, String descriptionEvenement,
-        Date dateEvenement ,Client client) {
-        super();
-        this.nomEvenement = nomEvenement;
-        this.typeEvenement = typeEvenement;
-        this.lieuEvenement = lieuEvenement;
-        this.descriptionEvenement = descriptionEvenement;
-        this.dateEvenement = dateEvenement;
-        this.client = client;
-    }
-
-    //Getters et Setters
-    public int getIdEvent() {
-        return idEvent;
-    }
-
-    public void setIdEvent(int idEvent) {
-        this.idEvent = idEvent;
-    }
-
-
-    public String getNomEvenement() {
-        return nomEvenement;
-    }
-
-
-    public void setNomEvenement(String nomEvenement) {
-        this.nomEvenement = nomEvenement;
-    }
-
-
-    public String getTypeEvenement() {
-        return typeEvenement;
-    }
-
-
-    public void setTypeEvenement(String typeEvenement) {
-        this.typeEvenement = typeEvenement;
-    }
-
-
-    public String getLieuEvenement() {
-        return lieuEvenement;
-    }
-
-
-    public void setLieuEvenement(String lieuEvenement) {
-        this.lieuEvenement = lieuEvenement;
-    }
-
-
-    public String getDescriptionEvenement() {
-        return descriptionEvenement;
-    }
-
-
-    public void setDescriptionEvenement(String descriptionEvenement) {
-        this.descriptionEvenement = descriptionEvenement;
-    }
-
-
-    public Date getDateEvenement() {
-        return dateEvenement;
-    }
-
-
-    public void setDateEvenement(Date dateEvenement) {
-        this.dateEvenement = dateEvenement;
+    public void addPrestataire(Prestataire prestataire) {
+        this.prestataires.add(prestataire);
+        prestataire.getEvenements().add(this);
     }
     
+    public void removePrestataire(Prestataire prestataire) {
+        this.prestataires.remove(prestataire);
+        prestataire.getEvenements().remove(this);
+    }
+
+    public void updatePrestataire(Prestataire prestataireExist, Prestataire newPrestataireExist) {
+        //suppression de l'ancien prestataire
+        this.prestataires.remove(prestataireExist);
+
+        //Ajout du nouveau prestataire
+        this.prestataires.add(newPrestataireExist);
+    }
 }
