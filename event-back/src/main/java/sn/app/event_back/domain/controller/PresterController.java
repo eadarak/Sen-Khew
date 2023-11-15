@@ -38,24 +38,28 @@ public class PresterController {
     }
 
     @PostMapping
-    public ResponseEntity<String> addExistingPrestataireToEvent(
+    public ResponseEntity<String> addExistingPrestatairesToEvent(
             @PathVariable int idEvent,
-            @RequestParam int existingPrestataireId) {
-
+            @RequestParam List<Integer> existingPrestataireIds) {
+    
         // Vérifiez si l'événement existe
         if (!evenementService.doesEvenementExist(idEvent)) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Evenement not found.");
         }
-
-        // Vérifiez si le prestataire existant existe
-        if (!prestataireService.doesPrestataireExist(existingPrestataireId)) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Prestataire not found.");
+    
+        // Vérifiez si les prestataires existent
+        for (int existingPrestataireId : existingPrestataireIds) {
+            if (!prestataireService.doesPrestataireExist(existingPrestataireId)) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Prestataire not found for ID: " + existingPrestataireId);
+            }
         }
-
-        // Ajoutez le prestataire existant à l'événement
-        evenementService.addExistingPrestataireToEvent(idEvent, existingPrestataireId);
-
-        String responseMessage = "Existing Prestataire added successfully to Event with ID: " + idEvent;
+    
+        // Ajoutez les prestataires existants à l'événement
+        for (int existingPrestataireId : existingPrestataireIds) {
+            evenementService.addExistingPrestataireToEvent(idEvent, existingPrestataireId);
+        }
+    
+        String responseMessage = "Existing Prestataires added successfully to Event with ID: " + idEvent;
         return ResponseEntity.status(HttpStatus.CREATED).body(responseMessage);
     }
 
