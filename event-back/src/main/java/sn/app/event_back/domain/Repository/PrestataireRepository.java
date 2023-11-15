@@ -17,3 +17,5 @@ public interface PrestataireRepository extends JpaRepository<Prestataire, Intege
     @Query("SELECT p FROM Prestataire p JOIN p.evenements e WHERE e.idEvent = :idEvent")
     List<Prestataire> findByEventId(@Param("idEvent") int idEvent);
 }
+
+

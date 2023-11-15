@@ -7,3 +7,4 @@ import sn.app.event_back.domain.model.Client;
 public interface ClientRepository extends JpaRepository<Client, Integer>{
     
 }
+
