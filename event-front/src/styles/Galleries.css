@@ -1,0 +1,22 @@
+.photo img{
+    
+    width: 400px;
+    height: 500px;
+    margin-right: 20px;
+    border: 10px solid #b8860b;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 1);
+    overflow: hidden;
+    cursor: pointer;
+    object-fit: cover;
+    transition: .2s linear;
+    
+}
+.photo h3{
+    text-align: center;
+    font-size: 4em;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: black;
+}
+.photos{
+    color: white;
+}

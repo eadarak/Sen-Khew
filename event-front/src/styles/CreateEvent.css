@@ -1,0 +1,31 @@
+
+.contents{
+    background-image: url(g.png);
+    padding-top: 50px;  
+    margin-right: auto;
+    align-items: center;
+    padding-left: 30%;
+    padding-bottom: 0%;
+    
+}
+
+.buttons input { 
+    width: 50%;
+    text-align: center;
+    background-color: #D8A43E;
+}
+div input {
+    margin-right: 10px; 
+    align-items: center;
+}
+form {
+    margin: 5%;
+    width: 400px;
+    
+}
+
+
+form select {
+    background-color: #ffffff;
+    padding: 10px;
+}
