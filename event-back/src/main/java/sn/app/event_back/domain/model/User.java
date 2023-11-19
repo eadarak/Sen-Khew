@@ -1,9 +1,14 @@
 package sn.app.event_back.domain.model;
 
+import java.util.Collection;
+import java.util.Collections;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -13,35 +18,37 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table (name = "utilisateurs")
-//public class User implements UserDetails {
-public class User {
-
+@Table(name = "utilisateurs")
+public class User implements UserDetails {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String nom;
+    private String email;
     @Column(name = "mot_de_passe")
-    private String password;
-    private  String email;
-    private Boolean actif = false;
+    private String mdp;
+    private String nom;
+    private String adresse;
+    private String telephone;
+    private boolean actif = false;
+    //@Enumerated(EnumType.STRING)
+    private String role;
 
-    @Enumerated(EnumType.STRING)
-    private TypeDeRole role;
 
-   /*  @Override
+    @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(new SimpleGrantedAuthority("ROLE_" +this.role));
+        return Collections.singletonList(new SimpleGrantedAuthority("ROLE_"+this.role));
     }
 
     @Override
     public String getPassword() {
-        return this.password;
+        return this.mdp;
     }
 
     @Override
@@ -68,5 +75,5 @@ public class User {
     public boolean isEnabled() {
         return this.actif;
     }
-    */
+    
 }
