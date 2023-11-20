@@ -1,72 +1,135 @@
-
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import Footer from "../components/Footer";
-import ScrollTopButton from '../components/ScroolTopButton';
-import '../styles/Home.css';
-import "../styles/CreateEvent.css";
-import "bootstrap/dist/css/bootstrap.css"
+import '../styles/CreateEvent.css';
+
 
 function CreateEvent() {
-    return <>
-    <div>
-        <div>   
-            <div className="contents">
-                <form >
-                    <div class=" mb-3">
-                        <label for="Nom" >Nom : </label>
-                        <input type="text"  class="form-control" placeholder="Votre Nom" size="60"/>
-                    </div>
-                    <br></br>
-                    <div class="mb-3">
-                        <label >E-mail : </label>
-                        <input type="email"  class="form-control" placeholder="Votre E-mail" size="60"/>
-                    </div>
-                    <br></br>
-                    <div class="mb-3">
-                        <label >Telephone : </label>
-                        <input type="tel"  class="form-control" placeholder="Votre Telephone" size="60"/>
-                    </div>
-                    <br></br>                   
-                    <div class="mb-3">
-                        <label >lieu d'evenement : </label>
-                        <input type="text"  class="form-control" placeholder="Lieu d'evenement" size="60"/>
-                    </div>
-                    <br></br>
-                    <div class="mb-3">
-                        <label >Date de l'evenement : </label>
-                        <input type="date"  class="form-control" size="60"/>
-                    </div>
-                   <br></br>
-                   <div class="mb-3">
-                        <label >type d'evenement : </label>
-                        <select>
-                            <option>Mettez le type d'evenement</option>
-                            <option>Mariage</option>
-                            <option>Bapteme</option>
-                            <option>Anniversaire</option>
-                            <option>Thiante</option>
-                            <option>Communion/Confirmation</option>
-                            <option>Seminaire</option>
-                        </select>
-                    </div>
-                    <br></br>  
-                    <div>
-                        <label  for="commentaire">  Description: </label><br></br>
-                        <textarea  cols="62" id="commentaire" rows="5" name="Commentaire"></textarea>
-                    </div> <br></br>
-                    <div className="buttons">
-                        <input  type="submit" class="btn btn-success" value="Envoyer" name="Envoyer"  size="60"/>
-                        {/* <button style={{ background: '#D8A43E', color: '#fff' }} type="button" onClick={this.handleSubmit}>Se Connecter</button> */}
+    const InitialEvent = {
+        nomEvenement: '',
+        typeEvenement: 'Familliale',
+        lieuEvenement: '',
+        descriptionEvenement: '',
+        dateEvenement: ''
+    };
+    // State pour stocker les valeurs des champs du formulaire
+    const [formData, setFormData] = useState(InitialEvent);
+    const [eventId, setEventId] = useState('');
 
-                    </div>
-                    <br></br>   
-                </form>    
-            </div>
-            <Footer/>
+    // Fonction pour gérer les changements dans les champs du formulaire
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    // Fonction pour gérer la soumission du formulaire
+    const handleSubmit = async(e) => {
+        e.preventDefault();
+
+        try{
+            const response = await fetch("http://localhost:8080/sen-khew/evenements",{
+                method:"POST", 
+                headers:{
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            })
+            if(!response.ok){
+                throw new Error('Erreur de connexion au serveur');
+            }
+                const data = await response.json();
+                alert("create event success",data._links.self)
+                const urlId= data._links.self.href;
+                        // Utilisez la version fonctionnelle de setEventId pour garantir l'état actuel
+                setEventId((prevEventId) => {
+                    console.log(prevEventId); // La valeur précédente
+                    console.log(urlId); // La nouvelle valeur que vous allez définir
+                    return urlId; // La nouvelle valeur que vous définissez
+                });
+                console.log(eventId);
+            
+        }catch (error) {
+            alert("Erreur lors de la creation d'evenement", error.message);
+        };
+    };
+
+    return(
+        <>
+            <div id='createEvent'> 
+            <h1>Page de création d'événement</h1>
+            <form onSubmit={handleSubmit} id="eventForm">
+                <label>
+                    Nom de l'événement:
+                    <input
+                    type="text"
+                    id="nomEvenement"
+                    name="nomEvenement"
+                    value={formData.nomEvenement}
+                    onChange={handleChange}
+                    required
+                    />
+                </label>
+                <br />
+
+                <label>
+                    Type de l'événement:
+                    <select
+                        id="typeEvenement"
+                        name="typeEvenement"
+                        value={formData.typeEvenement}
+                        onChange={handleChange}
+                    >
+                        <option value="Familliale">Familliale</option>
+                        <option value="religieuse">Religieuse</option>
+                        <option value="professionnelle">Professionnelle</option>
+                        <option value="autres">Autres</option>
+                    </select>
+                </label>
+                <br />
+
+                <label>
+                    Lieu de l'événement:
+                    <input
+                    type="text"
+                    id="lieuEvenement"
+                    name="lieuEvenement"
+                    value={formData.lieuEvenement}
+                    onChange={handleChange}
+                    required
+                    />
+                </label>
+                <br />
+
+                <label>
+                    Description de l'événement:
+                    <textarea
+                    id="descriptionEvenement"
+                    name="descriptionEvenement"
+                    value={formData.descriptionEvenement}
+                    onChange={handleChange}
+                    />
+                </label>
+                <br />
+
+                <label>
+                    Date de l'événement:
+                    <input
+                    type="date"
+                    id="dateEvenement"
+                    name="dateEvenement"
+                    value={formData.dateEvenement}
+                    onChange={handleChange}
+                    required
+                    />
+                </label>
+                <br />
+
+                <button type="submit" id="create"> Create Event</button>
+            </form>
+            
         </div>
-        <ScrollTopButton/>
+        <Footer/>
         <Outlet/>
-    </div>
-</>
+        </>
+    )
 }
 export default CreateEvent;

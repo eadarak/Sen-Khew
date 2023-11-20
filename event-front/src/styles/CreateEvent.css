@@ -1,31 +1,87 @@
-
-.contents{
-    background-image: url(g.png);
-    padding-top: 50px;  
-    margin-right: auto;
-    align-items: center;
-    padding-left: 30%;
-    padding-bottom: 0%;
-    
+:root {
+    --primary-color: #D8A43E;
 }
 
-.buttons input { 
-    width: 50%;
+#createEvent {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    background-image: url(/public/images/g.png);
+}
+
+#createEvent h1 {
+    font-size: 25px;
+    margin: 10px 0;
+    font-family: 'Libre Baskerville', serif;
     text-align: center;
-    background-color: #D8A43E;
-}
-div input {
-    margin-right: 10px; 
-    align-items: center;
-}
-form {
-    margin: 5%;
-    width: 400px;
-    
 }
 
+#eventForm {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    font-size: 18px;
+}
 
-form select {
-    background-color: #ffffff;
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
     padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+#nomEvenement,
+#lieuEvenement{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+
+#nomEvenement:focus,
+#lieuEvenement:focus{
+    background-color: #ccc;
+    border: 3px solid #D8A43E; 
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    background-color: #ccc;
+    border: 3px solid #D8A43E;  
+    outline: none;
+}
+
+
+#create {
+    background-color: #D8A43E;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 20px; /* Arrondir le bouton */
+    padding: 10px 15px;
+    font-size: 18px;
+    font-family: 'Libre Baskerville', serif;
+    width: 100%;
+}
+
+#create:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #D8A43E;
 }
