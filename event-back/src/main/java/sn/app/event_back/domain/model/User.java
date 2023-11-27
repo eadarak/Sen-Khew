@@ -28,7 +28,7 @@ import lombok.Setter;
 public class User implements UserDetails {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String email;
     @Column(name = "mot_de_passe")

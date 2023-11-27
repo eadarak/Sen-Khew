@@ -7,13 +7,14 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import sn.app.event_back.domain.service.UserService;
+import sn.app.event_back.domain.model.Prestataire;
+import sn.app.event_back.domain.service.PrestataireService;
 
 
 @SpringBootApplication
 public class EventApplication implements CommandLineRunner {
 	@Autowired
-	private UserService userRepository;
+	private PrestataireService prestataireService;
 
 	private static final Logger logger = LoggerFactory.getLogger(EventApplication.class);
 
@@ -24,6 +25,6 @@ public class EventApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args){
 		logger.info("Starting application");
-		//userRepository.createNewUser(new User(0,"eadarak@gmail.com","eadarak","EADARAK","THIES","77 000 00 00",false,"ADMIN"));
+		prestataireService.savePrestataire(new Prestataire(1001,"Happiness","Décoration","Dakar","Happiness@gmail.com","77 115 62 44","123456789",null));
 	}
 }

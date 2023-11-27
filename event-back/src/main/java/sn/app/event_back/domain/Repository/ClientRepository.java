@@ -1,10 +1,14 @@
 package sn.app.event_back.domain.Repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
+
+import org.springframework.data.repository.CrudRepository;
 
 import sn.app.event_back.domain.model.Client;
 
-public interface ClientRepository extends JpaRepository<Client, Integer>{
-    
+public interface ClientRepository extends CrudRepository<Client, Integer>{
+    Optional <Client> findByMailClient(String email);
+
+    Optional<Client> findById(int idClient);
 }
 

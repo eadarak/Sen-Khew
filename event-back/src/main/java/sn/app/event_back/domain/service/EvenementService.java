@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import sn.app.event_back.domain.Repository.EvenementRepository;
+import sn.app.event_back.domain.model.Client;
 import sn.app.event_back.domain.model.Evenement;
 import sn.app.event_back.domain.model.Prestataire;
 
@@ -20,6 +21,9 @@ public class EvenementService {
 
     @Autowired
     private PrestataireService prestataireService;
+
+    @Autowired
+    private ClientService clientService;
     
     public  Prestataire getPrestataireById(int idPrestataire){
         return this.prestataireService.getPrestataireById(idPrestataire);
@@ -66,9 +70,27 @@ public class EvenementService {
     
 
 
-    public void saveEvent(Evenement event){
-        this.evenementRepository.save(event);
+    public Evenement saveEvent(Evenement event) {
+        return this.evenementRepository.save(event);
     }
+
+    public void createEventWithClientId(Evenement event, String clientEmail) {
+        // Obtenez le client à partir de l'e-mail
+        Client client = clientService.getClientFromEmail(clientEmail);
+
+        // Assurez-vous que le client existe
+        if (client != null) {
+            // Définissez l'ID du client pour l'événement
+            event.setClient(client);
+
+            // Enregistrez l'événement dans la base de données
+            evenementRepository.save(event);
+        } else {
+            // Gérez le cas où le client n'est pas trouvé
+            throw new RuntimeException("Client not found with email: " + clientEmail);
+        }
+    }
+
     
     /**
      * Methode permettant de recuperer la liste des evenements
@@ -128,6 +150,49 @@ public class EvenementService {
             // L'événement n'existe pas, vous pouvez gérer cela en lançant une exception ou en renvoyant un message d'erreur
             throw new RuntimeException("Evenement with ID " + idEvent + " not found");
         }
+    }
+
+
+        public Evenement updateClientEvent(int eventId, Evenement updatedEvent) {
+        // Rechercher l'événement par ID
+        Optional<Evenement> existingEventOptional = evenementRepository.findById(eventId);
+
+        if (existingEventOptional.isPresent()) {
+            // L'événement existe, mettez à jour les propriétés nécessaires
+            Evenement existingEvent = existingEventOptional.get();
+            existingEvent.setNomEvenement(updatedEvent.getNomEvenement());
+            existingEvent.setTypeEvenement(updatedEvent.getTypeEvenement());
+            existingEvent.setLieuEvenement(updatedEvent.getLieuEvenement());
+            existingEvent.setDescriptionEvenement(updatedEvent.getDescriptionEvenement());
+            existingEvent.setDateEvenement(updatedEvent.getDateEvenement());
+
+            // Enregistrez les modifications dans la base de données
+            return evenementRepository.save(existingEvent);
+        } else {
+            // L'événement n'existe pas, vous pouvez gérer cela en lançant une exception ou en renvoyant null
+            throw new RuntimeException("Événement non trouvé avec l'ID : " + eventId);
+        }
+    }
+
+
+    public void deleteClientEvent(int eventId) {
+        // Recherchez l'événement par ID
+        Optional<Evenement> eventOptional = evenementRepository.findById(eventId);
+
+        if (eventOptional.isPresent()) {
+            // L'événement existe, supprimez-le
+            Evenement event = eventOptional.get();
+            evenementRepository.delete(event);
+        } else {
+            // L'événement n'existe pas, vous pouvez gérer cela en lançant une exception ou en renvoyant un message d'erreur
+            throw new RuntimeException("Event not found with ID: " + eventId);
+        }
+    }
+
+    public Client getClientInfo(int idClient) {
+        // Implémentation pour récupérer les informations du client associées à l'événement
+        // en utilisant le clientRepository ou une autre source de données
+        return clientService.getClientInfo(idClient);
     }
 
 }
