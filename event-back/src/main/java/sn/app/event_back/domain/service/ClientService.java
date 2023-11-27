@@ -1,5 +1,7 @@
 package sn.app.event_back.domain.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +18,13 @@ public class ClientService {
     public void saveClient(Client client){
         this.clientRepository.save(client);
     }
-    
+
+    public Client getClientFromEmail(String email) {
+        Optional<Client> clientOptional = clientRepository.findByMailClient(email);
+        return clientOptional.orElse(null);
+    }
+
+    public Client getClientInfo(int idClient) {
+        return clientRepository.findById(idClient).orElse(null);
+    }
 }

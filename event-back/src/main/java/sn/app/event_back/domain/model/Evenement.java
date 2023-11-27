@@ -43,6 +43,7 @@ public class Evenement {
     private String dateEvenement;
 
     //relation evenement client
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_client")
     private Client client;

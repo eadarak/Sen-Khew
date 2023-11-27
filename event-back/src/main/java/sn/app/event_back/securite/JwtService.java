@@ -28,12 +28,13 @@ public class JwtService {
         String token = request.getHeader(HttpHeaders.AUTHORIZATION);
 
         if(token != null){
-            String user = Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token.replace(PREFIX, "")).getBody().getSubject();
+            String email = Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token.replace(PREFIX, "")).getBody().getSubject();
 
-            if(user != null){
-                return user;
+            if(email != null){
+                return email;
             }
         }
         return null;
     }
+
 }

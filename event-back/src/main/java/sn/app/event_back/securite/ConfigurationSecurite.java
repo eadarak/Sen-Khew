@@ -35,7 +35,7 @@ public class ConfigurationSecurite{
         .cors().and()
         .sessionManagement()
         .sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-        .authorizeRequests().requestMatchers(HttpMethod.POST,"/login","signup").permitAll().
+        .authorizeRequests().requestMatchers(HttpMethod.POST,"/login","/signup").permitAll().
         anyRequest().authenticated()
         .and()
         .exceptionHandling()

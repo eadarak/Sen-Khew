@@ -27,7 +27,7 @@ import lombok.Setter;
 @Table(name ="prestataires")
 public class Prestataire {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idPrestataire;
     private String nomPrestataire;
     private String typeService;
