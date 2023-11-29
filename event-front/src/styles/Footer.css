@@ -30,9 +30,9 @@ footer {
 }
 
 #footer div  h2{
-    font-family: 'Libre Baskerville';
-    font-weight: 700;
-    font-size: 30px;
+    font-family: 'Playball','Libre Baskerville';
+    font-weight: 500;
+    font-size: 38px;
     margin-bottom: 10px;
 }
 #footer #description  h2 span{
@@ -40,9 +40,9 @@ footer {
 }
 
 #footer #description  p{
-    font-size: 18px;
+    font-size: 24px;
     line-height: 1.5em;
-    font-family: 'Roboto';
+    font-family: 'Playball','Roboto';
     text-align: justify;
 }
 
@@ -66,8 +66,8 @@ footer {
 #footer #liensUtiles li a{
     text-decoration: none;
     transition: all .3s ease-in-out;
-    font-size: 20px;
-    font-family: 'Roboto';
+    font-size: 28px;
+    font-family: 'Playball','Roboto';
     text-align: center;
     color: var(--footer-color);
     display: inline-block;
@@ -86,10 +86,22 @@ footer {
 }
 
 #footer #mediaSociaux a{
-    margin: 0 7px;
-    width: 50px;
-    height: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 10px;
+    text-decoration: none;
+
 } 
+
+#footer #mediaSociaux a p{
+    color: var(--footer-color);
+    margin-left: 10px;
+    font-family: 'Libre Baskerville';
+    font-size: 14px;
+}
+
 
 #footer #mediaSociaux a:hover{
     filter: brightness(80%);
@@ -117,5 +129,7 @@ footer  #footer + #copyright{
     align-items: center;
     justify-content: center;
     gap: 30px;
+    font-family: 'Playball','Roboto';
+    font-size: 22px;
     
 }
