@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Roboto&display=swap');
+
+#serviceBody{
+    background: rgb(252, 217, 147);
+    width: 80%;
+    height: 1022px;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 30px;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px 0px rgba(255, 210, 113, 0.4);
+}
+
+#serviceBody > h1{
+    text-align: center;
+    font-size: 38px;
+    margin-bottom: 50px;
+    color: black;
+    text-align: center;
+    font-family: 'Playball', cursive;
+    font-weight: 500;
+}
+
+#Part{
+    display: flex;
+    height: 100%;
+}
+
+
+#leftPart{
+    float: left;
+    width: 55%;
+    margin-right: 5%;
+}
+
+#rightPart{
+    float: left;
+    width: 40%;
+    height: inherit;
+
+}
+
+#leftPart > p{
+    text-align: justify;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    font-family: 'Libre Baskerville', 'Roboto';
+    
+
+}
+
+#rightPart{
+    border-radius: 10px;
+    background: #D8A43E;
+    box-shadow: 10px 4px 4px 0px rgba(216, 164, 62, 0.50);
+    padding: 30px;
+    color: azure;
+    align-self: stretch;
+    height: 100%;
+}
+
+
+#rightPart h1{
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: 'Playball', cursive;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.767);
+}
+
+#rightPart > p{
+    text-align: center;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    font-family: 'Libre Baskerville', 'Roboto' ;
+    display: inline-block;
+    width: 70%;
+    margin: 20px 80px;
+}
+
+.checkmark{
+    display: flex;
+    gap: 25px;
+    margin-bottom: 10px;
+    width: 70%;
+    margin-left: 80px;
+}
+
+.checkmark h2{
+    text-align: center;
+    padding-top: 5px;
+    font-size: 18px;
+    font-family: 'Libre Baskerville', 'Roboto' ;
+    font-style: normal;
+    font-weight: 400;
+
+}
+
+#nosEvents {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-top: 20px;
+}

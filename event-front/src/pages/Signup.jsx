@@ -107,7 +107,7 @@ function Signup() {
     return (
         <>
             <div className="form-container">
-                <h2 >Joignez-vous a nous, creez un compte, vivez l'evenement!</h2>
+                <h2 >Page d'inscription!</h2>
                 <form id="registrationForm" onSubmit={handleSubmit}>
                 <label  htmlFor="nom">Nom</label>
                     <input

@@ -1,8 +1,7 @@
 import CopyrightIcon from '@mui/icons-material/Copyright';
 import { FaFacebook, FaGithub } from 'react-icons/fa';
 import { FaPhone, FaXTwitter } from "react-icons/fa6";
-import { MdAlternateEmail } from 'react-icons/md';
-
+import { MdAlternateEmail } from "react-icons/md";
 import { Link } from 'react-router-dom';
 import '../styles/Footer.css';
 

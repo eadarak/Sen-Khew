@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { Link, Navigate, Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import Footer from '../components/Footer';
 import '../styles/Login.css';
 
@@ -66,7 +66,8 @@ function Login() {
     };
 
     if (isAuthenticated) {
-        return <Navigate to="../pages/Home" />;
+        window.location.href = '../pages/Home';
+        return null
     } else {
         return (
             <>
