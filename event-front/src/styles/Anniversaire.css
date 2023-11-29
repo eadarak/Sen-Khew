@@ -1,0 +1,26 @@
+.Anniversaire{
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.00);
+    background: #FFF;
+    box-shadow: 2px 8px 4px 0px rgba(0, 0, 0, 0.25);
+    padding: 10px;
+    width: 45%;
+}
+
+.Anniversaire h2{
+    text-align: center;
+    padding-top: 5px;
+    font-size: 20px;
+    font-family: 'Libre Baskerville', 'Roboto' ;
+    font-style: normal;
+    font-weight: 600;
+    padding-top: 15px;
+    margin-bottom: 10px;
+}
+
+.Anniversaire p{
+    text-align: justify;
+    font-size: 16px;
+    font-family: 'Libre Baskerville', 'Roboto' ;
+    padding: 10px;
+}

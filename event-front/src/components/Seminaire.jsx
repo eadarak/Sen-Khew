@@ -1,13 +1,11 @@
 import React from "react";
-import './Seminaire.css';
+import '../styles/Anniversaire.css';
+
 
 function Seminaire() {
     return(
-        <div className="Seminaire">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
-            <i class="fas fa-chalkboard"></i>
-
-
+        <div className="Anniversaire">
+            
             <h2>Seminaire</h2>
             <p>Chez Sen Khew, nous sommes déterminés à faire de votre 
                 séminaire une expérience exceptionnelle. Notre équipe 

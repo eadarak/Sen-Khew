@@ -26,5 +26,9 @@ public class EventApplication implements CommandLineRunner {
 	public void run(String... args){
 		logger.info("Starting application");
 		prestataireService.savePrestataire(new Prestataire(1001,"Happiness","Décoration","Dakar","Happiness@gmail.com","77 115 62 44","123456789",null));
+		prestataireService.savePrestataire(new Prestataire(1001,"Cordon Bleu","Traiteur","Ziguinchor","Cbleu@gmail.com","77 115 62 44","123456789",null));
+		prestataireService.savePrestataire(new Prestataire(1001,"NM Securité","Sécurité","Dakar","nmSecurite@gmail.com","77 115 62 44","123456789",null));
+
+
 	}
 }
