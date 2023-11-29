@@ -1,0 +1,75 @@
+
+/* Style du conteneur du formulaire d'inscription */
+.form-container {
+    width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+}
+
+/* Style du titre du formulaire */
+.form-container h2 {
+    text-align: center;
+    color: #000;
+}
+
+/* Style des étiquettes des champs */
+label {
+    display: block;
+    margin: 10px 0 5px;
+    color: #000;
+}
+
+/* Style des champs de saisie */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+/* Style du bouton de soumission */
+#button-sign {
+    width: 100%;
+    transition: background-color 0.3s;
+    background-color: #d49c2c;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 20px; /* Arrondir le bouton */
+    padding: 10px 15px;
+    font-size: 18px;
+    font-family: 'Libre Baskerville', serif;
+}
+
+#button-sign:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #d49c2c;
+} 
+
+#registrationForm span{
+    font-size: 14px;
+}
+
+#password-input {
+    position: relative;
+}
+
+#password-input input {
+    padding-right: 30px;
+}
+
+#password-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}

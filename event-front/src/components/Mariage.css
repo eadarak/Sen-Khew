@@ -1,0 +1,28 @@
+.Mariage{
+    box-shadow: 5px 10px 10px #888;
+    border-radius: 5%;
+    padding-bottom: 2%;
+}
+i{
+    color: #D8A43E;
+    padding-left: 50%;
+}
+a{
+    display: inline-block;
+    padding: 10px 20px; 
+    color: #fff; 
+    background-color: #000;
+    text-decoration: none; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.bouton-lien{
+    background-color: #D8A43E;
+    margin-left: 30%;
+}
+#Communion h2{
+    color: #D8A43E;
+    text-align:center;
+    font-family:'Playball','Libre Baskerville';
+}
