@@ -112,7 +112,7 @@ function AddPrest({ eventId }) {
 
     <button onClick={() => {
         setAskForNewPrestataire(false);
-        <Navigate to="../pages/Home" />
+        <Navigate to="../pages/DashClient" />
     }}>Oui</button>
 
     return (

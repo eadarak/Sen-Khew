@@ -4,9 +4,6 @@ import Footer from "../components/Footer";
 import '../styles/AjoutPrestataire.css';
 import '../styles/CreateEvent.css';
 import AddPrest from "./AddPrest";
-
-
-
 function CreateEvent() {
     const InitialEvent = {
         nomEvenement: '',
@@ -15,6 +12,7 @@ function CreateEvent() {
         descriptionEvenement: '',
         dateEvenement: ''
     };
+
 
     const token = sessionStorage.getItem('jwt');
     const tokenWithoutBearer = token ? token.split(" ")[2] : null;
@@ -26,8 +24,6 @@ function CreateEvent() {
     const [errorMessage, setErrorMessage] = useState('');
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
     const [showErrorMessage, setShowErrorMessage] = useState(false);
-
-
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
