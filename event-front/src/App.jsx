@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import { Outlet } from 'react-router-dom';
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
+import React from "react";
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Navbar from "./Navbar";
 import CreateEvent from "./pages/CreateEvent";
+import DashClient from "./pages/DashClient";
 import Galleries from "./pages/Galleries";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import PageError from "./pages/PageError";
 import Services from "./pages/Services";
 import Signup from "./pages/Signup";
-import DashClient from "./pages/DashClient";
+
 import './styles/App.css';
-import {jwtDecode} from "jwt-decode";
 
 const token = sessionStorage.getItem('jwt');
   
@@ -21,17 +21,20 @@ const token = sessionStorage.getItem('jwt');
   const userName = decodedToken ? decodedToken.nom : null;
   //console.log(userName);
 const router = createBrowserRouter([
-  // ... (autres configurations de route)
-
-  // Route principale avec le Navbar partagé
+  {
+    path: "/", // Route racine
+    element: (
+      <>
+      <Navbar/>
+      <Home />
+      </>
+    ), // Page d'accueil
+  },
   {
     path: "/",
-    element: (
-      <Navbar>
-        <Home />
-      </Navbar>
-    ),
-    children: [
+    element: <Navbar/>,
+    errorElement : <PageError />,
+    children : [
       {
         path: 'pages/Home',
         element: <Home />
@@ -64,20 +67,10 @@ const router = createBrowserRouter([
   },
 ]);
 
-function App() {
-  const [isLoggedIn, setLoggedIn] = useState(false);
-  return (
-    <RouterProvider router={router}>
-      {/* Navbar à la racine de l'application */}
-      <Navbar isLoggedIn={isLoggedIn} />
 
-      {/* Reste de l'application */}
-      <div>
-        <Outlet />
-        {/* ... (autres composants et éléments de l'application) */}
-      </div>
-    </RouterProvider>
-  );
+function App() {
+  return <RouterProvider router={router} />
 }
+
 
 export default App;

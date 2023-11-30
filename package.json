@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@mui/x-data-grid": "^6.18.2",
+    "jwt-decode": "^4.0.0"
+  }
+}
