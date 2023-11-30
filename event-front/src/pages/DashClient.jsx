@@ -63,15 +63,15 @@ function EventList() {
   };
 
   const columns = [
-    { field: "nomEvenement", headerName: "Nom", width: 250 },
-    { field: "typeEvenement", headerName: "Type", width: 250 },
-    { field: "dateEvenement", headerName: "Date", width: 250 },
-    { field: "lieuEvenement", headerName: "Lieu", width: 250 },
-    { field: "descriptionEvenement", headerName: "Description", width: 250 },
+    { field: "nomEvenement", headerName: "Nom", width: 160 },
+    { field: "typeEvenement", headerName: "Type", width: 160 },
+    { field: "dateEvenement", headerName: "Date", width: 160 },
+    { field: "lieuEvenement", headerName: "Lieu", width: 160 },
+    { field: "descriptionEvenement", headerName: "Description", width: 160 },
     {
       field: "edit",
       headerName: "Modifier",
-      width: 250,
+      width: 160,
       sortable: false,
       filterable: false,
       renderCell: (row) => (
@@ -88,7 +88,7 @@ function EventList() {
     {
       field: "delete",
       headerName: "Supprimer",
-      width: 250,
+      width: 160,
       sortable: false,
       filterable: false,
       renderCell: (row) => (
@@ -121,7 +121,7 @@ function EventList() {
         />
         <Snackbar
           open={open}
-          autoHideDuration={2500}
+          autoHideDuration={1600}
           onClose={() => setOpen(false)}
           message="Evenement Supprime"
         />
