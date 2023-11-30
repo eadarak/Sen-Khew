@@ -16,6 +16,7 @@ function Home() {
             <NosServices/>
             <Footer/>
         </div>
+        
         <Outlet/>
         </>
     )
