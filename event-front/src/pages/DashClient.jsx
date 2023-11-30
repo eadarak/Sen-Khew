@@ -20,7 +20,7 @@ function EventList() {
   const token = sessionStorage.getItem("jwt");
 
   const decodedToken = token ? jwtDecode(token) : null;
-  const userId = decodedToken ? decodedToken.id : null;
+  const userId = decodedToken ? (decodedToken.id+1) : null;
   const userRole = decodedToken ? decodedToken.role : null;
   const userName = decodedToken ? decodedToken.sub : null;
   

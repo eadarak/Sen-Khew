@@ -18,8 +18,14 @@ public class JwtService {
 
     static final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
     
-    public String getToken(String username){
-        String token = Jwts.builder().setSubject(username).setExpiration(new Date(System.currentTimeMillis() + EXPIRATIONTIME)).signWith(key).compact();
+    public String getToken(String username, int id, String role, String name, String tel){
+        String token = Jwts.builder()
+        .setSubject(username)
+        .claim("id", id)       
+        .claim("role", role)
+        .claim("nom", name)
+        .claim("nom", tel)
+        .setExpiration(new Date(System.currentTimeMillis() + EXPIRATIONTIME)).signWith(key).compact();
         return token;
     }
 

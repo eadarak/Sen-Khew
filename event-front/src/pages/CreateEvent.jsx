@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import Footer from "../components/Footer";
+<<<<<<< HEAD
 import '../styles/AjoutPrestataire.css';
+=======
+
+>>>>>>> mirfou
 import '../styles/CreateEvent.css';
 import AddPrest from "./AddPrest";
 function CreateEvent() {
@@ -117,6 +121,7 @@ function CreateEvent() {
             {showSuccessMessage && <div className="success-message">{successMessage}</div>}
 
         <div id="createPage">
+<<<<<<< HEAD
         <div id="page">
 
         {eventId ?(
@@ -186,6 +191,11 @@ function CreateEvent() {
             </div>
         )}
 
+=======
+        <div id="page"> 
+            <h1>Create Event</h1>
+        </div>
+>>>>>>> mirfou
         </div>
         <Footer/>
         </div>
