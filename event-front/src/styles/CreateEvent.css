@@ -13,15 +13,18 @@
     font-size: 18px;
 }
 
-#createEvent h1 {
-    font-size: 25px;
+#createEvent-title{
+    font-size: 40px;
     margin: 10px 0;
-    font-family: 'Libre Baskerville', serif;
+    font-family: 'Playball','Libre Baskerville';
     text-align: center;
+    color: #0d0a04;
+    font-style: normal;
+    font-weight: 500;
 }
 
-#eventForm {
-    max-width: 400px;
+#evenForm {
+    max-width: 500px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
@@ -29,6 +32,8 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     font-size: 18px;
+    font-family: 'Libre Baskerville';
+    background:linear-gradient(to left,#fae6bf,#686153);
 }
 
 label {
@@ -46,6 +51,7 @@ select {
     border: 1px solid #ccc;
     border-radius: 10px;
     font-size: 18px;
+    font-family: 'Libre Baskerville';
 }
 
 #nomEvenement,

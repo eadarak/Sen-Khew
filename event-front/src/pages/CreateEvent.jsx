@@ -123,8 +123,8 @@ function CreateEvent() {
             <AddPrest eventId={eventId}/>
         ):(
             <div id='createEvent'> 
-            <h1>Page de création d'événement</h1>
-                <form onSubmit={handleSubmit} id="eventForm">
+            <h1 id="createEvent-title">Page de création d'événement</h1>
+                <form onSubmit={handleSubmit} id="evenForm" className="evenform">
                     <label>
                         Nom de l'événement:
                         <input

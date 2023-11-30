@@ -1,0 +1,42 @@
+#dashboard{
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 90%;
+    margin: 20px auto;
+}
+#dashboard > h1{
+    font-size: 35px;
+    font-family: 'Playball','Libre Baskerville';
+    font-weight: 500;
+    font-style: normal;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #372a11;
+}
+
+#root > div:nth-child(2) > div > div.MuiDataGrid-footerContainer.MuiDataGrid-withBorderColor.css-wop1k0-MuiDataGrid-footerContainer{
+    display: none;
+}
+
+#dashboard > div > div.MuiDataGrid-main.css-204u17-MuiDataGrid-main > div.MuiDataGrid-columnHeaders.MuiDataGrid-withBorderColor.css-1iyq7zh-MuiDataGrid-columnHeaders{
+    font-size: 20px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Libre Baskerville','Roboto';
+    font-weight: 800;
+}
+
+#dashboard > div > div.MuiDataGrid-main.css-204u17-MuiDataGrid-main > div.MuiDataGrid-virtualScroller.css-qvtrhg-MuiDataGrid-virtualScroller  div  div{
+    font-size: 20px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Libre Baskerville','Roboto';
+    background: #fff;
+}
+#dashboard > div > div.MuiDataGrid-main.css-204u17-MuiDataGrid-main > div.MuiDataGrid-virtualScroller.css-qvtrhg-MuiDataGrid-virtualScroller > div > div > div > div:nth-child(8){
+    display: none;
+}

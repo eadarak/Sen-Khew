@@ -3,12 +3,12 @@ import React from "react";
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Navbar from "./Navbar";
 import CreateEvent from "./pages/CreateEvent";
+import DashClient from "./pages/DashClient";
 import Galleries from "./pages/Galleries";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import DashClient from "./pages/DashClient";
-import Profile from "./pages/Profile";
 import PageError from "./pages/PageError";
+import Profile from "./pages/Profile";
 import Services from "./pages/Services";
 import Signup from "./pages/Signup";
 
@@ -64,6 +64,10 @@ const router = createBrowserRouter([
       {
         path: 'pages/DashClient',
         element: <DashClient />
+      },
+      {
+        path: 'pages/Profile',
+        element: <Profile />
       },
     ],
   },
