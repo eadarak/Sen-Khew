@@ -42,7 +42,7 @@
     z-index: -1;
 }
 
-#createEvent h1 {
+.login-container > h1 {
     font-size: 36px;
     margin-bottom: 20px;
     color: #fff;

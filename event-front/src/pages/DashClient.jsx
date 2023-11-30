@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { DataGrid } from "@mui/x-data-grid";
-import Snackbar from "@mui/material/Snackbar";
-import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { Stack } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import Snackbar from "@mui/material/Snackbar";
+import { DataGrid } from "@mui/x-data-grid";
 import { jwtDecode } from "jwt-decode";
-import { Outlet } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
 import Footer from '../components/Footer';
+import "../styles/Dashboard.css";
 
 function EventList() {
   const [events, setEvents] = useState([]);
@@ -102,16 +102,10 @@ function EventList() {
   return (
     <React.Fragment>
       <div
-        style={{
-          height: 310,
-          width: "100%",
-          backgroundColor: "rgba( 244, 208, 63, 0.34)",
-          marginTop: "50px",
-          padding: "50px",
-        }}
+        id="dashboard"
       >
         <h1>
-          Mes evenements
+          Mes événements
         </h1>
         <DataGrid
           style={{
