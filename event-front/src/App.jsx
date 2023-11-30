@@ -7,6 +7,7 @@ import Galleries from "./pages/Galleries";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import DashClient from "./pages/DashClient";
+import DashPrestataire from "./pages/DashPrestataire";
 import Profile from "./pages/Profile";
 import PageError from "./pages/PageError";
 import Services from "./pages/Services";
@@ -64,6 +65,14 @@ const router = createBrowserRouter([
       {
         path: 'pages/DashClient',
         element: <DashClient />
+      },
+      {
+        path: 'pages/DashPrestataire',
+        element: <DashPrestataire />
+      },
+      {
+        path: 'pages/Profile',
+        element: <Profile />
       },
     ],
   },

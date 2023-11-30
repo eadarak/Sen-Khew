@@ -20,11 +20,11 @@ public class JwtService {
     
     public String getToken(String username, int id, String role, String name, String tel){
         String token = Jwts.builder()
-        .setSubject(username)
+        .setSubject(tel)
         .claim("id", id)       
         .claim("role", role)
         .claim("nom", name)
-        .claim("nom", tel)
+        //.claim("nom", tel)
         .setExpiration(new Date(System.currentTimeMillis() + EXPIRATIONTIME)).signWith(key).compact();
         return token;
     }
