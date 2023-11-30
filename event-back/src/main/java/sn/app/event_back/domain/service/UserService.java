@@ -103,4 +103,28 @@ public class UserService implements UserDetailsService {
 
         userRepository.save(user);
     }
+
+    public int findUserIdByEmail(String email) {
+        return userRepository.findUserIdByEmail(email);
+    }
+    
+    public int findClientIdByEmail(String email) {
+        return userRepository.findClientIdByEmail(email);
+    }
+    
+    public int findPrestataireIdByEmail(String email) {
+        return userRepository.findPrestataireIdByEmail(email);
+    }
+    
+    public String findUserRoleByEmail(String email) {
+        return userRepository.findUserRoleByEmail(email);
+    }
+    
+    public String findUserNameByEmail(String email) {
+        return userRepository.findUserNameByEmail(email);
+    }
+
+    public String findUserTelByEmail(String email) {
+        return userRepository.findUserTelByEmail(email);
+    }
 }
