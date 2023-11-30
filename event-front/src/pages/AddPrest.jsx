@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Navigate } from "react-router-dom";
+//import { Navigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+
 
 function AddPrest({ eventId }) {
     const token = sessionStorage.getItem('jwt');
@@ -15,11 +17,9 @@ function AddPrest({ eventId }) {
 
 
     useEffect(() => {
-        // Si le message de succès est présent, déclencher l'affichage
         if (successMessage) {
             setShowSuccessMessage(true);
 
-            // Définir un intervalle pour vérifier périodiquement si le message doit être masqué
             const intervalId = setInterval(() => {
                 setShowSuccessMessage(false);
             }, 2000); // 2000 millisecondes = 2 secondes
@@ -109,42 +109,73 @@ function AddPrest({ eventId }) {
             setErrorMessage(`Erreur lors de l'ajout du prestataire à l'événement : ${error.message}`);
         });
     };
+    const navigate = useNavigate();
+
 
     <button onClick={() => {
         setAskForNewPrestataire(false);
-        <Navigate to="../pages/DashClient" />
+        navigate('../pages/DashClient');
     }}>Oui</button>
+
 
     return (
         <>
             {showErrorMessage && <div className="error-message">{errorMessage}</div>}
             {showSuccessMessage && <div className="success-message">{successMessage}</div>}
-            <div id='addPrestataire'> 
-            <h1>Page d'ajout de prestataire</h1>
-            <form onSubmit={handleSubmit} id="prestForm">
-                {eventId && (
-                    <>
-                         <select onChange={handleSelectChange}>
-                            {Array.isArray(prestataires) && prestataires.map(prestataire => (
-                                <option key={prestataire._links.self.href} value={prestataire._links.self.href}>
-                                    {prestataire.nomPrestataire} -  {prestataire.typeService}
-                                </option>
-                            ))}
-                        </select>
-                        <button type="submit" id="create"> Ajouter Prestataire à l'événement</button> 
-                        
-                    </>
-                )}
-            </form>
-        </div>
+            
+        <div id='addPrestataire'> 
+    <h1>Page d'ajout de prestataire</h1>
+    <form onSubmit={handleSubmit} id="prestForm">
+        {eventId && (
+            <>
+                <select onChange={handleSelectChange}> 
+                    <option value="" disabled selected hidden>Sélectionnez un prestataire</option>
+                    {Array.isArray(prestataires) && prestataires.map(prestataire => (
+                        <option key={prestataire._links.self.href} value={prestataire._links.self.href}>
+                            {prestataire.nomPrestataire} -  {prestataire.typeService}
+                        </option>
+                    ))}
+                </select>
+                <button type="submit" id="create"> Ajouter Prestataire à l'événement</button> 
+            </>
+        )}
+    </form>
+</div>
 
-        {askForNewPrestataire && (
+
+        
+            {/* {askForNewPrestataire && (
             <div style={{ textAlign: 'center' }}>
                 <p style={{ fontSize: 'x-large' }}>Voulez-vous ajouter un nouveau prestataire ?</p>
-                <button onClick={() => setAskForNewPrestataire(false)} style={{ color: 'red' }}>Non</button>
-                <button onClick={() => setAskForNewPrestataire(false)} style={{ color: 'green' }}>Oui</button>
+                <button onClick={() => {setAskForNewPrestataire(true); }}>
+                    Oui
+                </button>
+
+                <button onClick={() => {setAskForNewPrestataire(false);navigate('../pages/DashClient');}}style={{ color: 'red' }}>
+                    Non
+                </button>
             </div>
+            )} */}
+            {askForNewPrestataire && (
+  <div style={{ textAlign: 'center' }}>
+    <p style={{ fontSize: 'x-large' }}>Voulez-vous ajouter un nouveau prestataire ?</p>
+    <button onClick={() => { 
+      setAskForNewPrestataire(true); 
+      // Ajoutez ici le code pour ajouter le prestataire
+      // Ensuite, rechargez la page
+      window.location.reload();
+    }}>
+      Oui
+    </button>
+    <button onClick={() => { 
+      setAskForNewPrestataire(false);
+      navigate('../pages/DashClient'); 
+    }} style={{ color: 'red' }}>
+      Non
+    </button>
+  </div>
 )}
+
 
 
 

@@ -75,7 +75,7 @@ function Login() {
                     <div id='createEvent' className="login-container">
                         <h1 id='title'>Welcome Back!</h1>
                         <p id='after-title'>Connectez-vous pour découvrir des expériences étonnantes.</p>
-                        <form onSubmit={handleSubmit} id="eventForm" className="login-form">
+                        <form onSubmit={handleSubmit} id="loginForm" className="login-form">
                             <label htmlFor="email">Email</label>
                             <input
                                 type="text"
