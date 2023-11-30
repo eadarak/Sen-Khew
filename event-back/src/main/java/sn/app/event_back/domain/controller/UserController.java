@@ -26,16 +26,36 @@ public class UserController {
     private UserService userService;
 
     @Autowired
+    private ClientController clientController;
+
+    @Autowired
+    private PrestataireController prestataireController;
+
+    @Autowired
     AuthenticationManager authenticationManager;
 
     @PostMapping("/login")
     public ResponseEntity<?> getToken(@RequestBody AccountCredentials credentials){
         UsernamePasswordAuthenticationToken creds = 
         new UsernamePasswordAuthenticationToken(credentials.getEmail(), credentials.getMdp());
-
+        
         Authentication auth = authenticationManager.authenticate(creds);
 
-        String jwts = jwtService.getToken(auth.getName());
+        int userId = 0;
+
+        String email = auth.getName();
+        if (userService.findUserRoleByEmail(email)=="CLIENT") {
+            userId = userService.findClientIdByEmail(email);
+        }else if (userService.findUserRoleByEmail(email)=="PRESTATAIRE"){
+            userId = userService.findPrestataireIdByEmail(email);
+        }
+        //int userId = userService.findUserIdByEmail(email);
+        String role = userService.findUserRoleByEmail(email);
+	String name = userService.findUserNameByEmail(email);
+        String tel = userService.findUserTelByEmail(email);
+
+	
+        String jwts = jwtService.getToken(auth.getName(), userId, role, name, tel);
 
         return ResponseEntity.ok()
             .header(HttpHeaders.AUTHORIZATION, "Bearer  " + jwts)

@@ -8,8 +8,10 @@ import Galleries from "./pages/Galleries";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import PageError from "./pages/PageError";
+import Profile from "./pages/Profile";
 import Services from "./pages/Services";
 import Signup from "./pages/Signup";
+
 
 import './styles/App.css';
 
@@ -62,6 +64,10 @@ const router = createBrowserRouter([
       {
         path: 'pages/DashClient',
         element: <DashClient />
+      },
+      {
+        path: 'pages/Profile',
+        element: <Profile />
       },
     ],
   },

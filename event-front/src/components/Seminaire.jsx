@@ -1,11 +1,12 @@
 import React from "react";
+import { HiCake } from "react-icons/hi2";
 import '../styles/Anniversaire.css';
 
 
 function Seminaire() {
     return(
         <div className="Anniversaire">
-            
+            <HiCake color="#D8A43E" size={40}  style={{ display: 'block', margin: 'auto' }} />
             <h2>Seminaire</h2>
             <p>Chez Sen Khew, nous sommes déterminés à faire de votre 
                 séminaire une expérience exceptionnelle. Notre équipe 
