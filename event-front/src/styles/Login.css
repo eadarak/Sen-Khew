@@ -30,6 +30,18 @@
     transform: rotateY(10deg);
 }
 
+#loginForm{
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-family: 'Libre Baskerville';
+}
+
 .login-container:before {
     content: "";
     position: absolute;

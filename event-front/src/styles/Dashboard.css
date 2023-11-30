@@ -22,10 +22,21 @@
 
 #dashboard > div > div.MuiDataGrid-main.css-204u17-MuiDataGrid-main > div.MuiDataGrid-columnHeaders.MuiDataGrid-withBorderColor.css-1iyq7zh-MuiDataGrid-columnHeaders{
     font-size: 20px;
-    width: 100%;
     text-align: center;
     align-items: center;
     justify-content: center;
     font-family: 'Libre Baskerville','Roboto';
-    font-weight: bold;
+    font-weight: 800;
+}
+
+#dashboard > div > div.MuiDataGrid-main.css-204u17-MuiDataGrid-main > div.MuiDataGrid-virtualScroller.css-qvtrhg-MuiDataGrid-virtualScroller  div  div{
+    font-size: 20px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Libre Baskerville','Roboto';
+    background: #fff;
+}
+#dashboard > div > div.MuiDataGrid-main.css-204u17-MuiDataGrid-main > div.MuiDataGrid-virtualScroller.css-qvtrhg-MuiDataGrid-virtualScroller > div > div > div > div:nth-child(8){
+    display: none;
 }
