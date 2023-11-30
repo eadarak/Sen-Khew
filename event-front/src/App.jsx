@@ -10,6 +10,7 @@ import PageError from "./pages/PageError";
 import Services from "./pages/Services";
 import Signup from "./pages/Signup";
 import DashClient from "./pages/DashClient";
+import Profile from "./pages/Profile";
 import './styles/App.css';
 import {jwtDecode} from "jwt-decode";
 
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
       {
         path: 'pages/DashClient',
         element: <DashClient />
+      },
+      {
+        path: 'pages/Profile',
+        element: <Profile />
       },
     ],
   },

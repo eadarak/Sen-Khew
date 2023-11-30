@@ -1,15 +1,15 @@
+import react from "react";
 import { Outlet } from "react-router-dom";
-import Footer from '../components/Footer';
-
-
+import Footer from "../components/Footer";
 
 function Profile() {
-    
+
     return(
-        <>
-        <Footer />
-        <Outlet/>
-        </>
+        <>  
+            <h1>Profile</h1>
+	    <Footer/>
+	    <Outlet/>
+       </>
     )
 }
 
