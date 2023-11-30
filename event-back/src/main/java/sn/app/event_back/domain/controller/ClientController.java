@@ -15,6 +15,7 @@ import sn.app.event_back.domain.service.EvenementService;
 @AllArgsConstructor
 @RepositoryRestController
 public class ClientController {
+
     @Autowired
     private  ClientService clientService;
 
@@ -25,5 +26,9 @@ public class ClientController {
     public void createClient(@RequestBody Client client){
         log.info("Client cree");
         this.clientService.saveClient(client);
+    }
+
+    public int findClientIdByEmail(String email) {
+        return findClientIdByEmail(email);
     }
 }
