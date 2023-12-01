@@ -1,11 +1,10 @@
 //import Navbar from '../Navbar';
+import { jwtDecode } from 'jwt-decode';
 import { Outlet } from 'react-router-dom';
 import Caroussel from '../components/Caroussel';
 import Footer from '../components/Footer';
 import NosServices from '../components/NosServices';
 import ScrollTopButton from '../components/ScroolTopButton';
-import DashPrestataire from './DashPrestataire';
-import { jwtDecode } from 'jwt-decode';
 import '../styles/Home.css';
 
 function Home() {
@@ -21,20 +20,13 @@ function Home() {
     
     return(
         <>
-        { isPrestataire ? (
-        <div id='Home'>
-            <ScrollTopButton/>
-            <DashPrestataire/>
-            <Footer/>
-        </div>
-        ) : (
+    
         <div id='Home'>
             <ScrollTopButton/>
             <Caroussel/>
             <NosServices/>
             <Footer/>
         </div>
-        )}
         
         <Outlet/>
         </>
