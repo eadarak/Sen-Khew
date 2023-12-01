@@ -41,15 +41,15 @@ public class UserController {
         
         Authentication auth = authenticationManager.authenticate(creds);
 
-        int userId = 0;
+        //int userId = 0;
 
         String email = auth.getName();
-        if (userService.findUserRoleByEmail(email)=="CLIENT") {
-            userId = userService.findClientIdByEmail(email);
-        }else if (userService.findUserRoleByEmail(email)=="PRESTATAIRE"){
-            userId = userService.findPrestataireIdByEmail(email);
-        }
-        //int userId = userService.findUserIdByEmail(email);
+        //if (userService.findUserRoleByEmail(email)=="CLIENT") {
+        //    userId = userService.findClientIdByEmail(email);
+        //}else if (userService.findUserRoleByEmail(email)=="PRESTATAIRE"){
+        //    userId = userService.findPrestataireIdByEmail(email);
+        //}
+        int userId = userService.findUserIdByEmail(email);
         String role = userService.findUserRoleByEmail(email);
 	String name = userService.findUserNameByEmail(email);
         String tel = userService.findUserTelByEmail(email);
