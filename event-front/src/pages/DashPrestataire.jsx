@@ -1,20 +1,15 @@
-import React, { useEffect, useState } from "react";
+import DeleteIcon from "@mui/icons-material/Delete";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import {
   Card,
   CardContent,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  IconButton,
+  IconButton
 } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import { DataGrid } from "@mui/x-data-grid";
 import { jwtDecode } from "jwt-decode";
+import React, { useEffect, useState } from "react";
+import Footer from "../components/Footer";
+import "../styles/Prest.css";
 
 function DashPrestataire() {
   const [providerInfo, setProviderInfo] = useState({});
@@ -122,11 +117,12 @@ function DashPrestataire() {
   ];
 
   return (
-    <div>
+    <>
+      <div>
       <Card style={{ marginBottom: "20px" }}>
         <CardContent>
-          <h2>Informations du Prestataire</h2>
-          <p>Nom: {userName}</p>
+          <h2 id="infoPrest">Informations du Prestataire</h2>
+          <p id="prest">Nom: {userName}</p>
           {/*<p>Email: {}</p>*/}
           {/* Ajoutez d'autres informations du prestataire ici */}
         </CardContent>
@@ -134,7 +130,7 @@ function DashPrestataire() {
 
       <Card>
         <CardContent>
-          <h2>Événements du Prestataire</h2>
+          <h2 id="title">Événements du Prestataire</h2>
           <DataGrid
             style={{
               width: "100%",
@@ -149,6 +145,8 @@ function DashPrestataire() {
         </CardContent>
       </Card>
     </div>
+    <Footer />
+    </>
   );
 }
 

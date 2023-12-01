@@ -1,9 +1,9 @@
 import { Avatar, Menu, MenuItem } from '@mui/material';
+import { jwtDecode } from 'jwt-decode';
 import React from 'react';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import Logo from './assets/Logo.png';
 import './styles/Navbar.css';
-import { jwtDecode } from 'jwt-decode';
 
 function Navbar() {
   const token = sessionStorage.getItem('jwt');
@@ -13,6 +13,8 @@ function Navbar() {
   const userId = decodedToken ? decodedToken.id : null;
   const userRole = decodedToken ? decodedToken.role : null;
   const userName = decodedToken ? decodedToken.nom : null;
+  const isPrestataire = userRole === "PRESTATAIRE";
+    
   console.log('User Id: ', userId);
   console.log('User Role:', userRole);
 
@@ -32,7 +34,7 @@ function Navbar() {
 
   const handleMyEventsClick = () => {
     // Ajoutez le code pour gérer le clic sur "Mes événements"
-    window.location.href = './DashClient';
+    (!isPrestataire && token)?(window.location.href = './DashClient'):(window.location.href = './DashPrestataire');
     // Par exemple, vous pouvez rediriger l'utilisateur vers la page de ses événements.
     console.log('Mes événements');
     handleMenuClose();
@@ -40,7 +42,7 @@ function Navbar() {
 
   const handleLogoutClick = () => {
     sessionStorage.removeItem('jwt');
-    window.location.reload();
+    window.location.href='/';
     console.log('Se déconnecter');
     handleMenuClose();
   };
@@ -69,9 +71,18 @@ function Navbar() {
               <li>
                 <NavLink to="./pages/Galleries">Galleries</NavLink>
               </li>
-              <li>
-                <NavLink to="./pages/CreateEvent">Create Event</NavLink>
-              </li>
+              {
+                (isPrestataire && token) ?(
+                  <li>
+                  <NavLink to="./pages/DashPrestataire">Dashboard</NavLink>
+                </li>
+                ):(
+                  <li>
+                  <NavLink to="./pages/CreateEvent">Create Event</NavLink>
+                </li>
+                ) 
+              }
+
             </ul>
           </div>
 
@@ -111,7 +122,9 @@ function Navbar() {
                   >
                     Mon compte
                   </MenuItem>
-                  <MenuItem
+                  {
+                    (!isPrestataire && token)?(
+                      <MenuItem
                     onClick={handleMyEventsClick}
                     style={{
                       fontFamily: 'Libre Baskerville',
@@ -119,6 +132,17 @@ function Navbar() {
                   >
                     Mes événements
                   </MenuItem>
+                    ):(
+                      <MenuItem
+                    onClick={handleMyEventsClick}
+                    style={{
+                      fontFamily: 'Libre Baskerville',
+                    }}
+                  >
+                    Mes Prestations
+                  </MenuItem>
+                    )
+                  }
                   <MenuItem
                     onClick={handleLogoutClick}
                     style={{

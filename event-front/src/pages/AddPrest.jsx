@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-//import { Navigate } from "react-router-dom";
+import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
+
+Modal.setAppElement('#root');
 
 
 function AddPrest({ eventId }) {
@@ -13,7 +15,10 @@ function AddPrest({ eventId }) {
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
     const [showErrorMessage, setShowErrorMessage] = useState(false);
     const [askForNewPrestataire, setAskForNewPrestataire] = useState(false);
+    const [showModal, setShowModal] = useState(false);
 
+
+        
 
 
     useEffect(() => {
@@ -111,77 +116,96 @@ function AddPrest({ eventId }) {
     };
     const navigate = useNavigate();
 
+    useEffect(() => {
+        if (successMessage) {
+            setShowModal(true);
 
-    <button onClick={() => {
-        setAskForNewPrestataire(false);
-        navigate('../pages/DashClient');
-    }}>Oui</button>
+            const modalTimeout = setTimeout(() => {
+                setSuccessMessage(null); // Réinitialiser le message de succès après la fermeture de la boîte modale
+            }, 2000); // 2000 millisecondes = 2 secondes
 
+            return () => clearTimeout(modalTimeout);
+        }
+    }, [successMessage]);
 
     return (
         <>
             {showErrorMessage && <div className="error-message">{errorMessage}</div>}
             {showSuccessMessage && <div className="success-message">{successMessage}</div>}
             
-        <div id='addPrestataire'> 
-    <h1>Page d'ajout de prestataire</h1>
-    <form onSubmit={handleSubmit} id="prestForm">
-        {eventId && (
-            <>
-                <select onChange={handleSelectChange}> 
-                    <option value="" disabled selected hidden>Sélectionnez un prestataire</option>
-                    {Array.isArray(prestataires) && prestataires.map(prestataire => (
-                        <option key={prestataire._links.self.href} value={prestataire._links.self.href}>
-                            {prestataire.nomPrestataire} -  {prestataire.typeService}
-                        </option>
-                    ))}
-                </select>
-                <button type="submit" id="create"> Ajouter Prestataire à l'événement</button> 
-            </>
-        )}
-    </form>
-</div>
-
-
-        
-            {/* {askForNewPrestataire && (
-            <div style={{ textAlign: 'center' }}>
-                <p style={{ fontSize: 'x-large' }}>Voulez-vous ajouter un nouveau prestataire ?</p>
-                <button onClick={() => {setAskForNewPrestataire(true); }}>
+            <div id='addPrestataire'> 
+                <h1>Page d'ajout de prestataire</h1>
+                <form onSubmit={handleSubmit} id="prestForm">
+                    {eventId && (
+                        <>
+                            <select onChange={handleSelectChange}> 
+                                <option value="" disabled selected hidden>Sélectionnez un prestataire</option>
+                                {Array.isArray(prestataires) && prestataires.map(prestataire => (
+                                    <option key={prestataire._links.self.href} value={prestataire._links.self.href}>
+                                        {prestataire.nomPrestataire} -  {prestataire.typeService}
+                                    </option>
+                                ))}
+                            </select>
+                            <button type="submit" id="create"> Ajouter Prestataire à l'événement</button> 
+                        </>
+                    )}
+                </form>
+            </div>  
+            {/* Boîte modale React Modal */}
+            <Modal
+                isOpen={showModal}
+                onRequestClose={() => setShowModal(false)}
+                style={{
+                    overlay: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                    },
+                    content: {
+                        padding: '20px',
+                        borderRadius: '8px',
+                        maxWidth: '400px',
+                        margin: 'auto',
+                        height:'14%',
+                        bottom: '80%',
+                        
+                    },
+                }}
+            >
+                <p style={{fontFamily:'Libre Baskerville', fontSize:'1.2    rem',paddingBottom:'10px'}}>Voulez-vous vraiment ajouter un nouveau prestataire ?</p>
+                <button onClick={() => { 
+                    setAskForNewPrestataire(true); 
+                    setShowModal(false);
+                }} 
+                style={{
+                    padding:'10px',
+                    borderRadius:'10px',
+                    width:'20%',
+                    fontSize:'16px',
+                    fontFamily:'Libre Baskerville',
+                    color:'white',
+                    backgroundColor:'green',
+                    marginRight:'20%'
+                }}>
                     Oui
                 </button>
-
-                <button onClick={() => {setAskForNewPrestataire(false);navigate('../pages/DashClient');}}style={{ color: 'red' }}>
+                <button onClick={() => { 
+                    setAskForNewPrestataire(false);
+                    navigate('../pages/DashClient'); 
+                    setShowModal(false);
+                }} 
+                style={{
+                    padding:'10px',
+                    borderRadius:'10px',
+                    width:'20%',
+                    fontSize:'16px',
+                    fontFamily:'Libre Baskerville',
+                    color:'white',
+                    backgroundColor:'red',
+                    marginLeft:'20%'
+                }}>
                     Non
                 </button>
-            </div>
-            )} */}
-            {askForNewPrestataire && (
-  <div style={{ textAlign: 'center' }}>
-    <p style={{ fontSize: 'x-large' }}>Voulez-vous ajouter un nouveau prestataire ?</p>
-    <button onClick={() => { 
-      setAskForNewPrestataire(true); 
-      // Ajoutez ici le code pour ajouter le prestataire
-      // Ensuite, rechargez la page
-      window.location.reload();
-    }}>
-      Oui
-    </button>
-    <button onClick={() => { 
-      setAskForNewPrestataire(false);
-      navigate('../pages/DashClient'); 
-    }} style={{ color: 'red' }}>
-      Non
-    </button>
-  </div>
-)}
-
-
-
-
-
+            </Modal>
         </>
-        
     );
 }
 
