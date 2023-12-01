@@ -20,7 +20,7 @@ public class JwtService {
     
     public String getToken(String username, int id, String role, String name, String tel){
         String token = Jwts.builder()
-        .setSubject(tel)
+        .setSubject(username)
         .claim("id", id)       
         .claim("role", role)
         .claim("nom", name)

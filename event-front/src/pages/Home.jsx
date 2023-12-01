@@ -17,20 +17,21 @@ function Home() {
     const userRole = decodedToken ? decodedToken.role : null;
     const userName = decodedToken ? decodedToken.sub : null;
     
-    const isClient = userRole == "CLIENT";
+    const isPrestataire = userRole === "PRESTATAIRE";
     
     return(
         <>
-        { isClient ? (
+        { isPrestataire ? (
+        <div id='Home'>
+            <ScrollTopButton/>
+            <DashPrestataire/>
+            <Footer/>
+        </div>
+        ) : (
         <div id='Home'>
             <ScrollTopButton/>
             <Caroussel/>
             <NosServices/>
-            <Footer/>
-        </div>) : (
-        <div id='Home'>
-            <ScrollTopButton/>
-            <DashPrestataire/>
             <Footer/>
         </div>
         )}
@@ -39,5 +40,4 @@ function Home() {
         </>
     )
 }
-
 export default Home;
