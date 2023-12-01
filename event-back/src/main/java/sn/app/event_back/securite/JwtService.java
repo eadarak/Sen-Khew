@@ -24,7 +24,7 @@ public class JwtService {
         .claim("id", id)       
         .claim("role", role)
         .claim("nom", name)
-        .claim("nom", tel)
+        //.claim("nom", tel)
         .setExpiration(new Date(System.currentTimeMillis() + EXPIRATIONTIME)).signWith(key).compact();
         return token;
     }
