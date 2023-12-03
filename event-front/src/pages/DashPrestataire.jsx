@@ -14,20 +14,21 @@ import "../styles/Prest.css";
 function DashPrestataire() {
   const [providerInfo, setProviderInfo] = useState({});
   const [events, setEvents] = useState([]);
+  const [client, setClient] = useState([]);
   const token = sessionStorage.getItem("jwt");
   const decodedToken = token ? jwtDecode(token) : null;
   const userRole = decodedToken ? decodedToken.role : null;
   const userName = decodedToken ? decodedToken.nom : null;
-  console.log(decodedToken)
+  //console.log(decodedToken)
   useEffect(() => {
-    fetchProviderInfo();
+    fetchClients();
     fetchEvents();
   }, []);
 
-  const fetchProviderInfo = () => {
+  const fetchEvents = () => {
     // Fetch provider information from your API
     // Adjust the URL and headers as needed
-    fetch("http://localhost:8080/sen-khew/evenements", {
+    fetch(`http://localhost:8080/sen-khew/prestataires/${decodedToken.id}/evenements`, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
@@ -35,29 +36,32 @@ function DashPrestataire() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Provider Info:", data);
-        setProviderInfo(data);
-      })
-      .catch((err) => console.error(err));
-  };
-
-  const fetchEvents = () => {
-    // Fetch provider's events from your API
-    // Adjust the URL and headers as needed
-    fetch("http://localhost:8080/sen-khew/evenements", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Provider Events:", data);
+        let index = data._embedded.evenements.length
+        console.log("Provider Info:", data._embedded.evenements[index]._links.client.href);
+        
         setEvents(data._embedded.evenements);
       })
       .catch((err) => console.error(err));
   };
+  
+  const fetchClients = () => {
+    
+    fetch(`http://localhost:8080/sen-khew/clients`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Client Info:", data._embedded.clients);
+        //data._embedded.evenements[data._embedded.evenements.length]._links.client.href)
+        setClient(data._embedded.client);
+      })
+      .catch((err) => console.error(err));
+  };
 
+  
   const deleteEvent = (eventId) => {
     if (window.confirm("Are you sure to delete this event?")) {
       fetch(eventId, {
@@ -110,12 +114,12 @@ function DashPrestataire() {
         <IconButton
           onClick={() => redirectToWhatsApp(row.data.contactWhatsApp)}
         >
-          <WhatsAppIcon color="black" />
+          <WhatsAppIcon color="green" />
         </IconButton>
       ),
     },
   ];
-
+  console.log("Events",events);
   return (
     <>
       <div>
