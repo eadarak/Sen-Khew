@@ -20,7 +20,7 @@ function EventList() {
   const token = sessionStorage.getItem("jwt");
 
   const decodedToken = token ? jwtDecode(token) : null;
-  const userId = decodedToken ? (decodedToken.id+1) : null;
+  const userId = decodedToken ? (decodedToken.id-3) : null;
   const userRole = decodedToken ? decodedToken.role : null;
   const userName = decodedToken ? decodedToken.sub : null;
   
@@ -35,7 +35,7 @@ function EventList() {
     })
       .then((response) => response.json())
       .then((data) => {
-        //console.log("Réponse de l'API :", data);
+        console.log("Réponse de l'API :", data);
         setEvents(data._embedded.evenements);
       })
       .catch((err) => console.error(err));
