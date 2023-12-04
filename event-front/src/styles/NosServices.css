@@ -86,20 +86,20 @@
 
 .checkmark{
     display: flex;
-    gap: 25px;
+    gap: 10px;
     margin-bottom: 10px;
     width: 70%;
     margin-left: 80px;
+    flex-wrap: nowrap
 }
 
 .checkmark h2{
     text-align: center;
     padding-top: 5px;
-    font-size: 18px;
+    font-size: 16px;
     font-family: 'Libre Baskerville', 'Roboto' ;
     font-style: normal;
     font-weight: 400;
-
 }
 
 #nosEvents {

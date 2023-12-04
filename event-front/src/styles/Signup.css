@@ -1,69 +1,126 @@
+:root {
+    --main-color: #D8A43E;
+    --text-color: #000;
+    --background-start: #000;
+    --background-end: #0b1014;
+    --border-color: #fff;
+}
 
-/* Style du conteneur du formulaire d'inscription */
 .form-container {
-    width: 400px;
+    width: 500px;
     margin: 50px auto;
-    padding: 20px;
-    background: #fff;
+    padding: 30px;
+    background: linear-gradient(to bottom, var(--background-start), var(--background-end));
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    font-size: 18px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    color: var(--text-color);
+    transform-origin: center bottom;
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.form-container:hover {
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+    transform: scale(1.05) translateY(-10px);
 }
 
 /* Style du titre du formulaire */
 .form-container h2 {
     text-align: center;
-    color: #000;
+    color: var(--main-color);
+    font-size: 32px;
+    margin-bottom: 20px;
+    position: relative;
+    font-family: 'Playball', cursive;
+    font-weight: 500;
+}
+
+.form-container h2:before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 2px;
+    background: var(--main-color);
 }
 
 /* Style des étiquettes des champs */
-label {
-    display: block;
-    margin: 10px 0 5px;
-    color: #000;
+.form-container label {
+    margin: 15px 0 5px;
+    color: var(--main-color);
+    transition: transform 0.3s, font-size 0.3s;
+    font-size: 18px;
+    font-family: 'Libre Baskerville', serif;
+    text-transform: capitalize;
 }
 
 /* Style des champs de saisie */
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-input[type="password"] {
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container  input[type="tel"],
+.form-container input[type="password"] {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin-bottom: 15px;
-    border: 1px solid #000;
-    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    transition: border-color 0.3s;
+}
+
+.form-container input[type="text"]:focus,
+.form-container input[type="email"]:focus,
+.form-container input[type="tel"]:focus,
+.form-container input[type="password"]:focus {
+    border-color: var(--main-color);
+}
+
+.form-container input[type="text"]:focus + label,
+.form-container input[type="email"]:focus + label,
+.form-container input[type="tel"]:focus + label,
+.form-container input[type="password"]:focus + label,
+.form-container input[type="text"]:not(:placeholder-shown) + label,
+.form-container input[type="email"]:not(:placeholder-shown) + label,
+.form-container input[type="tel"]:not(:placeholder-shown) + label,
+.form-container input[type="password"]:not(:placeholder-shown) + label {
+    transform: translateY(-30px);
+    font-size: 14px;
 }
 
 /* Style du bouton de soumission */
 #button-sign {
     width: 100%;
-    transition: background-color 0.3s;
-    background-color: #d49c2c;
-    color: white;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    background-color: var(--main-color);
+    color: #fff;
     cursor: pointer;
     border: none;
-    border-radius: 20px; /* Arrondir le bouton */
-    padding: 10px 15px;
+    border-radius: 20px;
+    padding: 12px 15px;
     font-size: 18px;
     font-family: 'Libre Baskerville', serif;
 }
 
 #button-sign:hover {
-    background-color: rgba(0, 0, 0, 0.9);
-    color: #d49c2c;
-} 
-
-#registrationForm span{
-    font-size: 14px;
+    background-color: #B8860B;
+    transform: scale(1.05);
 }
 
+/* Style du message d'erreur */
+.error-message {
+    color: #e74c3c;
+    margin-top: 5px;
+}
+
+/* Style du mot de passe */
 #password-input {
     position: relative;
 }
 
 #password-input input {
-    padding-right: 30px;
+    padding: 12px;
+    padding-right: 40px;
 }
 
 #password-icon {
@@ -72,4 +129,10 @@ input[type="password"] {
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
+    color: var(--main-color);
+    transition: color 0.3s;
+}
+
+#password-icon:hover {
+    color: var(--main-color);
 }

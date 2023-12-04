@@ -57,7 +57,7 @@ function Navbar() {
               alt="Le logo de notre site"
               style={{ width: '75px', height: '75px' }}
             />
-            <h1>Sen Khew</h1>
+            <h1>Sen Xëëw</h1>
           </Link>
 
           <div id="links">
@@ -155,10 +155,10 @@ function Navbar() {
               </>
             ) : (
               // Sinon, affichez les boutons de connexion
-              <>
+              <div id="connect-buttons">
                 <NavLink to="./pages/Login">Se Connecter</NavLink>
                 <NavLink to="./pages/Signup">S'inscrire</NavLink>
-              </>
+              </div>
             )}
           </div>
         </div>

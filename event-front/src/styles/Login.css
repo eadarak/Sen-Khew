@@ -1,23 +1,27 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Philosopher:wght@700&family=Playball&family=Roboto&family=Roboto+Slab&display=swap');
+
 :root {
-    --primary-color: #D8A43E;
-    --secondary-color: #000;
+    --main-color: #DAA520; /* Gold */
+    --text-color: #000;
+    --background-start: #000; /* Noir */
+    --background-end: #131a22; /* Bleu foncé */
+    --border-color: #fff; /* Blanc */
 }
 
 #loginPage {
     display: flex;
     flex-direction: column;
+    margin-top: 25px;
 }
 
 .login-container {
     max-width: 700px;
+    border-radius: 20px;
+
     height: 700px;
     margin: 50px auto;
     padding: 40px;
-    border-radius: 15px;
-    background: linear-gradient(to bottom right, var(--primary-color), var(--secondary-color));
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(to bottom right, var(--background-start), var(--background-end));
     color: #000;
     position: relative;
     overflow: hidden;
@@ -30,7 +34,7 @@
     transform: rotateY(10deg);
 }
 
-#loginForm{
+#loginForm {
     max-width: 500px;
     margin: 0 auto;
     padding: 20px;
@@ -40,6 +44,7 @@
     margin-bottom: 20px;
     font-size: 18px;
     font-family: 'Libre Baskerville';
+    position: relative;
 }
 
 .login-container:before {
@@ -50,8 +55,10 @@
     width: calc(100% + 20px);
     height: calc(100% + 20px);
     border-radius: 15px;
-    background: linear-gradient(to bottom right, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(to bottom right, var(--background-start), var(--background-end));
     z-index: -1;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
 }
 
 .login-container > h1 {
@@ -60,20 +67,23 @@
     color: #fff;
     text-align: center;
     font-family: 'Playball', cursive;
-
+    font-weight: 500;
+    margin-top: 50px;
 }
-#after-title{
+
+#after-title {
     font-size: 18px;
     margin-bottom: 15px;
     font-family: 'Libre Baskerville', serif;
     text-align: center;
+    color: #fff;
 }
 
 .login-input {
     padding: 15px;
     margin-bottom: 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
     width: 100%;
     background-color: rgba(255, 255, 255, 0.9);
     color: #000;
@@ -83,10 +93,9 @@
 
 .login-input:focus {
     background-color: #fff;
-    border: 3px solid var(--primary-color);
+    border: 3px solid var(--main-color);
     outline: none;
 }
-
 
 .password-input {
     position: relative;
@@ -102,8 +111,8 @@
 }
 
 .login-button {
-    background-color: var(--secondary-color);
-    color: white;
+    background-color: var(--border-color);
+    color: var(--main-color);
     padding: 15px;
     border: none;
     border-radius: 55px;
@@ -116,8 +125,8 @@
 }
 
 .login-button:hover {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
+    background-color: var(--main-color);
+    color: var(--border-color);
 }
 
 .login-links {
@@ -129,11 +138,10 @@
     font-size: 16px;
     color: rgba(255, 255, 255, 0.8);
     font-family: 'Libre Baskerville', serif;
-
 }
 
 .login-links a {
-    color: var(--primary-color);
+    color: var(--main-color);
     text-decoration: none;
     margin-right: 10px;
     font-weight: bold;
@@ -141,7 +149,7 @@
 }
 
 .login-links a:hover {
-    color: var(--secondary-color);
+    color: var(--border-color);
 }
 
 .password-icon:hover + input[type="password"] {
@@ -158,7 +166,18 @@
     border: none;
     margin-bottom: 20px;
     font-size: 18px;
+    background: linear-gradient(to bottom right, var(--background-start), var(--background-end));
 }
-.login-links p + p{
+
+.login-links p + p {
     gap: 15px;
+}
+
+.login-form label{
+    color: var(--main-color);
+    z-index: 1;
+    font-size: 18px;
+    text-transform: capitalize;
+    left: 15px;
+    
 }
